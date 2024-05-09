@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Details</title>
+  <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-header">
+      <div class="container">
+        <a th:href="@{/}" class="navbar-brand">Employee Dash board</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav"
+          aria-label="Expand Navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="nav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a th:href="@{/personal}" class="nav-link active" aria-current="page">Personal Details</a>
+            </li>
+            <li class="nav-item">
+              <a th:href="@{/professional}" class="nav-link">Professional Details</a>
+            </li>
+            <li class="nav-item">
+              <a th:href="@{/project}" class="nav-link">Project Details</a>
+            </li>
+            <li class="nav-item">
+              <a th:href="@{/hrfinance}" class="nav-link">Hr&amp;Finance Details</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <div class="container mt-3">
+    <div class="card mx-auto">
+      <div class="card-header">
+        <h2>Employee Personal Details</h2>
+      </div>
+      <div class="card-body">
+        <form th:action="@{/employee/personal}" method="post" th:object="${employeePersonal}">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group mb-3">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" th:field="*{name}" placeholder="Enter Name">
+              </div>
+              <div class="form-group mb-3">
+                <label for="mobile">Mobile Number</label>
+                <input type="text" class="form-control" id="mobile" th:field="*{mobileNumber}" placeholder="Enter Mobile Number" required>
+                <span id="mobile-error" class="error" th:if="${#fields.hasErrors('mobileNumber')}" th:errors="*{mobileNumber}"></span>
+              </div>
+              <div class="form-group mb-3">
+                <label for="age">Age</label>
+                <input type="number" class="form-control" id="age" th:field="*{age}" placeholder="Enter Age">
+              </div>
+              <div class="form-group mb-3">
+                <label for="gender">Gender</label>
+                <select id="gender" class="form-control" th:field="*{gender}">
+                  <option value="" selected="selected">Choose Gender</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group mb-3">
+                <label for="email">Personal Email</label>
+                <input type="email" class="form-control" id="email" th:field="*{personalMailId}" placeholder="Enter Email">
+              </div>
+              <div class="form-group mb-3">
+                <label for="emergencyContact">Emergency Contact</label>
+                <input type="text" class="form-control" id="emergencyContact" th:field="*{emergencyContactNumber}" placeholder="Enter Emergency Contact">
+                <span id="emergencyContact-error" class="error" th:if="${#fields.hasErrors('emergencyContactNumber')}" th:errors="*{emergencyContactNumber}"></span>
+              </div>
+              <div class="form-group mb-3">
+                <label for="address">Address</label>
+                <input type="text" class="form-control" id="address" th:field="*{address}" placeholder="Enter Address">
+              </div>
+              <div class="form-group mb-3">
+                <label for="aadharCard">Aadhar Card Number</label>
+                <input type="text" class="form-control" id="aadharCard" th:field="*{aadharCardNumber}" placeholder="Enter Aadhar Card Number" required>
+                <span id="aadharCard-error" class="error" th:if="${#fields.hasErrors('aadharCardNumber')}" th:errors="*{aadharCardNumber}"></span>
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-end">
+            <div class="col-md-6 text-right mb-3">
+              <button type="submit" id="nextButton" class="btn btn-primary float-end">Next</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script th:src="@{/webjars/bootstrap/js/bootstrap.bundle.min.js}"defer></script>
+  <script th:src="@{/js/personal.js}"defer></script>
+</body>
+</html>

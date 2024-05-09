@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee List</title>
+    <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-3">
+        <h2>Employee List</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Mobile Number</th>
+                    <th>Personal Email</th>
+                    <th>Emergency Contact</th>
+                    <th>Address</th>
+                    <th>Aadhar Card Number</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="employee : ${employees}">
+                    <td th:text="${employee.id}"></td>
+                    <td th:text="${employee.name}"></td>
+                    <td th:text="${employee.age}"></td>
+                    <td th:text="${employee.gender}"></td>
+                    <td th:text="${employee.mobileNumber}"></td>
+                    <td th:text="${employee.personalMailId}"></td>
+                    <td th:text="${employee.emergencyContactNumber}"></td>
+                    <td th:text="${employee.address}"></td>
+                    <td th:text="${employee.aadharCardNumber}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
