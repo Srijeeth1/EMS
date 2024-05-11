@@ -23,7 +23,7 @@ public class Project {
 	    private String technicalLead;
 	    @OneToOne
 	    @JoinColumn(name = "personal_id")
-	    private EmployeePersonal employeePersonal;
+	    private PersonalDetails personalDetails;
 	    
 	    public Project() {
 	    	
@@ -106,12 +106,12 @@ public class Project {
 			this.technicalLead = technicalLead;
 		}
 
-		public EmployeePersonal getEmployeePersonal() {
-			return employeePersonal;
+		public PersonalDetails getEmployeePersonal() {
+			return personalDetails;
 		}
 
-		public void setEmployeePersonal(EmployeePersonal employeePersonal) {
-			this.employeePersonal = employeePersonal;
+		public void setEmployeePersonal(PersonalDetails personalDetails) {
+			this.personalDetails = personalDetails;
 		}
 		
 		

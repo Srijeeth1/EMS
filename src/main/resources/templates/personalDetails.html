@@ -40,9 +40,13 @@
         <h2>Employee Personal Details</h2>
       </div>
       <div class="card-body">
-        <form th:action="@{/employee/personal}" method="post" th:object="${employeePersonal}">
+        <form th:action="@{/employee/personal}" method="post" th:object="${personalDetails}">
           <div class="row">
             <div class="col-md-6">
+              <div class="form-group mb-3">
+                <label for="employeeId">Employee Id</label>
+                <input type="tel" class="form-control" id="employeeId" th:field="*{employeeId}" placeholder="Enter Employee ID">
+              </div>
               <div class="form-group mb-3">
                 <label for="name">Name</label>
                 <input type="text" class="form-control" id="name" th:field="*{name}" placeholder="Enter Name">

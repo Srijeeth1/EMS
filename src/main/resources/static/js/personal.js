@@ -8,7 +8,6 @@
 
   function validateForm() {
     let isValid = true;
-console.log("help");
     if (!/^\d{10,12}$/.test(mobile.value)) {
       mobileError.textContent = 'Please enter a valid mobile number.';
       mobileError.style.color = 'red';
