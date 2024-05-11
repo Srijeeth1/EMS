@@ -1,15 +1,13 @@
 package com.example.service;
 
-import java.util.List;
-
 //import java.util.List;
 
+import com.example.Entity.ProfessionalDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.Entity.EmployeePersonal;
-import com.example.Entity.EmployeeProfessional;
-import com.example.Entity.HrAndFinance;
+import com.example.Entity.PersonalDetails;
+        import com.example.Entity.HrAndFinance;
 import com.example.Entity.Project;
 import com.example.repo.EmployeeHrAndFinanceRepository;
 import com.example.repo.EmployeePersonalRepository;
@@ -57,14 +55,14 @@ public class EmployeeServiceImpl implements EmployeeService {
 //        return savedPersonal;
 //    }
 @Override
-    public EmployeePersonal createEmployeePersonal(EmployeePersonal employeePersonal) {
-		return personalRepository.save(employeePersonal);
+    public PersonalDetails createEmployeePersonal(PersonalDetails personalDetails) {
+		return personalRepository.save(personalDetails);
     	
     }
     
     @Override
-    public EmployeeProfessional createEmployeeProfessional(EmployeeProfessional employeeProfessional) {
-        return professionalRepository.save(employeeProfessional);
+    public ProfessionalDetails createEmployeeProfessional(ProfessionalDetails professionalDetails) {
+        return professionalRepository.save(professionalDetails);
     }
 
     @Override
@@ -77,19 +75,19 @@ public class EmployeeServiceImpl implements EmployeeService {
         return hrFinanceRepository.save(employeeHrFinance);
     }
 
-    @Override
-	public List<EmployeePersonal> getAllEmployeeDetails() {
-		List<EmployeePersonal> employeePersonalList = personalRepository.findAll();
-		return employeePersonalList;
-	}
-
 //    @Override
-//    public Long getLastEmployeePersonalId() {
-//        EmployeePersonal lastEmployee = personalRepository.findFirstByOrderByIdDesc();
-//        if (lastEmployee != null) {
-//            return lastEmployee.getId();
-//        } else {
-//            return null;
-//        }
-//    }
+//	public List<EmployeePersonal> getAllEmployeeDetails() {
+//		List<EmployeePersonal> employeePersonalList = personalRepository.findAll();
+//		return employeePersonalList;
+//	}
+
+    @Override
+    public Long getLastEmployeePersonalId() {
+        PersonalDetails lastEmployee = personalRepository.findFirstByOrderByIdDesc();
+        if (lastEmployee != null) {
+            return lastEmployee.getId();
+        } else {
+            return null;
+        }
+    }
 }

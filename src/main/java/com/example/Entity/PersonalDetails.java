@@ -7,10 +7,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 
 @Entity
-public class EmployeePersonal {
+public class PersonalDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	private Long employeeId;
 	private String name;
 	private Integer age;
 	private String gender;
@@ -19,20 +20,21 @@ public class EmployeePersonal {
     private String personalMailId;
     private String address;
     private Long aadharCardNumber;
-    @OneToOne(mappedBy = "employeePersonal")
-    private EmployeeProfessional employeeProfessional;
+    @OneToOne(mappedBy = "personalDetails")
+    private ProfessionalDetails professionalDetails;
 
-    @OneToOne(mappedBy = "employeePersonal")
+    @OneToOne(mappedBy = "personalDetails")
     private Project employeeProjectDetails;
 
-    @OneToOne(mappedBy = "employeePersonal")
+    @OneToOne(mappedBy = "personalDetails")
     private HrAndFinance employeeHrFinance;
     
-    public EmployeePersonal() {
+    public PersonalDetails() {
     }
 
-    public EmployeePersonal(String name, Integer age, String gender, Long mobileNumber, Long emergencyContactNumber, String personalMailId, String address, Long aadharCardNumber) {
-        this.name = name;
+    public PersonalDetails(Long employeeId, String name, Integer age, String gender, Long mobileNumber, Long emergencyContactNumber, String personalMailId, String address, Long aadharCardNumber) {
+        this.employeeId=employeeId;
+		this.name = name;
         this.age = age;
         this.gender = gender;
         this.mobileNumber = mobileNumber;
@@ -48,6 +50,13 @@ public class EmployeePersonal {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Long getEmployeeId() {
+		return employeeId;
+	}
+	public void setEmployeeId(Long employeeId) {
+		this.employeeId = employeeId;
 	}
 
 	public String getName() {
@@ -114,12 +123,12 @@ public class EmployeePersonal {
 		this.aadharCardNumber = aadharCardNumber;
 	}
 
-	public EmployeeProfessional getEmployeeProfessional() {
-		return employeeProfessional;
+	public ProfessionalDetails getEmployeeProfessional() {
+		return professionalDetails;
 	}
 
-	public void setEmployeeProfessional(EmployeeProfessional employeeProfessional) {
-		this.employeeProfessional = employeeProfessional;
+	public void setEmployeeProfessional(ProfessionalDetails professionalDetails) {
+		this.professionalDetails = professionalDetails;
 	}
 
 	public Project getEmployeeProjectDetails() {

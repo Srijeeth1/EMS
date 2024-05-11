@@ -18,7 +18,7 @@ public class HrAndFinance {
     private String IFSCCode;
     @OneToOne
     @JoinColumn(name = "personal_id")
-    private EmployeePersonal employeePersonal;
+    private PersonalDetails personalDetails;
     
     public HrAndFinance() {
     	
@@ -62,11 +62,11 @@ public class HrAndFinance {
 	public void setIFSCCode(String iFSCCode) {
 		IFSCCode = iFSCCode;
 	}
-	public EmployeePersonal getEmployeePersonal() {
-		return employeePersonal;
+	public PersonalDetails getEmployeePersonal() {
+		return personalDetails;
 	}
-	public void setEmployeePersonal(EmployeePersonal employeePersonal) {
-		this.employeePersonal = employeePersonal;
+	public void setEmployeePersonal(PersonalDetails personalDetails) {
+		this.personalDetails = personalDetails;
 	}
 	
 }

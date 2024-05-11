@@ -7,7 +7,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 @Entity
-public class EmployeeProfessional {
+public class ProfessionalDetails {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -17,17 +17,17 @@ public class EmployeeProfessional {
     private String projectName;
     private String reportingManager;
     private String officeLocation;
-    private boolean billable;
+
     @OneToOne
     @JoinColumn(name = "personal_id")
-    private EmployeePersonal employeePersonal;
+    private PersonalDetails personalDetails;
     
-    public EmployeeProfessional() {
+    public ProfessionalDetails() {
     	
     }
     
-	public EmployeeProfessional(Long id, Long employeeId, String location, String companyMailId, String projectName,
-			String reportingManager, String officeLocation, boolean billable) {
+	public ProfessionalDetails(Long id, Long employeeId, String location, String companyMailId, String projectName,
+							   String reportingManager, String officeLocation, String billable) {
 		super();
 		this.id = id;
 		this.employeeId = employeeId;
@@ -36,7 +36,7 @@ public class EmployeeProfessional {
 		this.projectName = projectName;
 		this.reportingManager = reportingManager;
 		this.officeLocation = officeLocation;
-		this.billable = billable;
+
 	}
 	public Long getId() {
 		return id;
@@ -80,17 +80,12 @@ public class EmployeeProfessional {
 	public void setOfficeLocation(String officeLocation) {
 		this.officeLocation = officeLocation;
 	}
-	public boolean isBillable() {
-		return billable;
+
+	public PersonalDetails getEmployeePersonal() {
+		return personalDetails;
 	}
-	public void setBillable(boolean billable) {
-		this.billable = billable;
-	}
-	public EmployeePersonal getEmployeePersonal() {
-		return employeePersonal;
-	}
-	public void setEmployeePersonal(EmployeePersonal employeePersonal) {
-		this.employeePersonal = employeePersonal;
+	public void setEmployeePersonal(PersonalDetails personalDetails) {
+		this.personalDetails = personalDetails;
 	}
     
 }
